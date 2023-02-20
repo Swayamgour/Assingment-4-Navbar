@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+}
+
+.mail {
+    width: 100%;
+    height: 100vh;
+}
+
+.center {
+    width: 100%;
+    height: 20vh;
+    background-color: #003580;
+    border: 1 px solid black;
+    display: flex;
+    /* gap: 2rem;
+   padding: 2rem;  */
+}
+
+.img {
+    border-radius: 50%;
+    margin-top: 2rem;
+    /* /ng-right: 1rem; */
+
+}
+
+.img1 {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+}
+
+.Reactrictoin {
+    margin-top: 2rem;
+    margin-right: 1rem;
+}
+
+.Login {
+    margin-top: 2rem;
+    margin-right: 1rem;
+}
+
+.logoIcon {
+    /* margin-top: 5rem; */
+    /* border: 1px solid black; */
+    height: 5vh;
+    width: 6rem;
+    border-radius: 20px;
+    color: white;
+    margin-left: 5rem;
+
+    /* left: ; */
+}
+.logoIconList{
+    margin-top: 5rem;
+
+}
+
+.logoIcon:hover {
+    color: white;
+    border: 1px solid white;
+
+}
+
+.secondCenter {
+    width: 100%;
+    height: 40vh;
+    background-color: #003580;
+    margin-top: -5rem;
+    display: flex;
+    /* gap: 3rem; */
+    /* margin-left: 2rem; */
+    /* justify-content: space-evenly; */
+
+}
+
+.center_second {
+    display: flex;
+}
+
+.input_text {
+    width: 30%;
+    height: 8.4vh;
+    margin-top: 1rem;
+    border: 4px solid #febb02;
+    outline: none;
+}
+
+.input_text1 {
+    width: 30%;
+    height: 8vh;
+    margin-top: 1rem;
+    margin-left: 4.5rem;
+    text-align: center;
+    outline: none;
+
+    border: 4px solid #febb02;
+
+}
+
+.input_text_buttom {
+    width: 15%;
+    height: 8vh;
+    margin-top: 1rem;
+    text-align: center;
+    outline: none;
+
+    border: 4px solid #febb02;
+}
+
+.input_text_buttom1 {
+    width: 10%;
+    height: 9.8vh;
+    margin-top: 1rem;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    outline: none;
+
+    border: 4px solid #febb02;
+
+}
+.menuItem{
+    /* border: 1px solid black; */
+    margin-left: 3.5rem;
+    margin-top: 1.5rem;
+    width: 85%;
+    height: 30vh;
+    margin-left: 5.5rem;
+
+}
+.scroolList{
+    /* border: 1px solid black; */
+    margin-left: 5rem;
+    margin-top: 1.5rem;
+    width: 85%;
+    height: 35vh; 
+}
