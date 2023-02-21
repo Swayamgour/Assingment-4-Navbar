@@ -1,78 +1,142 @@
-import React from 'react'
-import style from './Restriction.module.css'
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import { AiOutlineClose } from "react-icons/ai";
+import * as React from "react";
+import { useEffect, useState } from 'react'
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
+import '../Login/Login.css'
+import { ValidEmail, validatPassword, validusername } from '../../Helper'
+import { Link } from "react-router-dom";
 
 
-function Restriction() {
+
+export default function Signup() {
     const [open, setOpen] = React.useState(false);
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [username, setusername] = useState("");
+    const [message, setMessage] = useState("");
+    const [pwmessage, setPwMessage] = useState("");
+    const [uMes, setUMes] = useState("");
+    const [data, setData] = useState([])
+   
+    // useEffect(() => {
+    //     if (localStorage.getItem('list')) {
+    //         let data1 = JSON.parse(localStorage.getItem('list'));
+    //         setData(data1);
+    //     }
+    // }, [])
 
-    const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-        '& .MuiDialogContent-root': {
-            padding: theme.spacing(2),
-        },
-        '& .MuiDialogActions-root': {
-            padding: theme.spacing(1),
-        },
-    }));
+    
+    
 
+    const UserNAme1 = (e) => {
+        setusername(e.target.value)
+        const validation = validusername(username)
+        setUMes(validation)
+    }
 
+    const handelClickInput = (e) => {
+        // alert()
+     setEmail(e.target.value)
+         const validation  = ValidEmail(email)
+        setMessage(validation)
+    }
+
+    const userPassword = (e) => {
+        console.log(e.target.value)
+
+        setPassword(e.target.value)
+        const validation = validatPassword(password)
+        setPwMessage(validation)
+    }
+    const Submit = () => {
+        if (message === "true" && uMes === "true" && pwmessage === "true") {
+            const obj = {
+                name: username,
+                password: password,
+                email: email,
+            };
+            data.push(obj)
+            setData([...data])
+            localStorage.setItem("list", JSON.stringify(data))
+            alert("Congratulations! You have successfully signed up!  🎉");
+          
+        } else {
+            alert("Enter correct Ditial")
+        }
+
+    }
     const handleClickOpen = () => {
         setOpen(true);
     };
+
     const handleClose = () => {
         setOpen(false);
     };
-    const handelClick=()=>{
-        setOpen(false)
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (email && password && username) {
+
+
+            setusername("");
+            setEmail("");
+            setPassword("");
+            setOpen(false);
+        }
     }
 
-
-
     return (
-        <>
-            <div className={style.position}>
-                <div className={style.button}>
-                    <Button style={{ width: "auto", height: "25%",  backgroundColor: "white", color: "black" }} onClick={handleClickOpen}>
-                      Restriction
-                    </Button>
-                    <BootstrapDialog
-                        onClose={handleClose}
-                        aria-labelledby="customized-dialog-title"
-                        open={open}
+        <div>
+            <p onClick={handleClickOpen}>Registration</p>
+            <Dialog
+                open={open}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle>
+                    {
+                        <div className="heading">
+                            <h3>Sign Up</h3> <h4 onClick={handleClose}>X</h4>
+                        </div>
+                    }
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText
+                        id="alert-dialog-slide-description"
+                        className="dialogbox"
                     >
-
-                        <DialogActions style={{ width: '25rem', height: '18rem' }} >
-
-                            <div className={style.centerDialbox}>
-                                <span className={style.booking}> <h2 onClick={handelClick}><AiOutlineClose/></h2> <h2 >Booking .com</h2></span>
-                                    <h3 className={style.signup}>Sign in or create an account</h3> 
-                                <div className={style.center}> 
-                                    <input className={style.inputbox} placeholder='UserName'/>
-                                 
-                                    <input className={style.inputbox} placeholder='Email'/>
-                                    <input className={style.inputbox} placeholder='Password'/>
+                        <form onSubmit={handleSubmit} className="signupform">
+                            <input
+                                type="text"
+                                value={username}
+                                placeholder="FullName"
+                                onChange={UserNAme1}
+                            />{uMes}
+                            <input
+                                type="text"
+                                value={email}
+                                placeholder="Email"
+                                onChange={handelClickInput}
+                            />{message}
                             
-                                    <button  className={style.button_}>Submit</button>
-                              <h6 style={{marginLeft:'2rem' , marginTop:'2rem'}}>By signing in or creating an account, you agree with our Terms & conditions and Privacy statement</h6>
+                            <input
+                                type="password"
+                                value={password}
+                                placeholder="password"
+                                onChange={userPassword}
+                            />{pwmessage}
 
-                                </div>
-                            </div>
+                            <button onClick={Submit}>Create account</button>
+                        </form>
 
-
-                        </DialogActions>
-                    </BootstrapDialog>
-                </div>
-                <div className={style.profilediv} >
-                </div>
-            </div>
-
-        </>
-    )
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions></DialogActions>
+            </Dialog>
+        </div>
+    );
 }
-
-
-export default Restriction;

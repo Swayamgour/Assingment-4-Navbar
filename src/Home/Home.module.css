@@ -34,7 +34,17 @@
 
 .Reactrictoin {
     margin-top: 2rem;
-    margin-right: 1rem;
+    margin-left: 1rem;
+    /* border: 1px solid black; */
+    height: 5vh;
+    background-color: white;
+    font-weight: 400;
+    width: 10%;
+    text-align: center;
+    border-radius: 5px;
+}
+.Reactrictoin:hover{
+    transform: scale(1.1);
 }
 
 .Login {
@@ -55,7 +65,7 @@
 }
 .logoIconList{
     margin-top: 5rem;
-
+    
 }
 
 .logoIcon:hover {
@@ -82,10 +92,11 @@
 
 .input_text {
     width: 30%;
-    height: 8.4vh;
+    height: 8vh;
     margin-top: 1rem;
     border: 4px solid #febb02;
     outline: none;
+    border-radius: 7px;
 }
 
 .input_text1 {
@@ -95,6 +106,7 @@
     margin-left: 4.5rem;
     text-align: center;
     outline: none;
+    border-radius: 7px;
 
     border: 4px solid #febb02;
 
@@ -106,19 +118,21 @@
     margin-top: 1rem;
     text-align: center;
     outline: none;
+    border-radius: 7px;
 
     border: 4px solid #febb02;
 }
 
 .input_text_buttom1 {
     width: 10%;
-    height: 9.8vh;
+    height: 8vh;
     margin-top: 1rem;
     background-color: blue;
     color: white;
     text-align: center;
     font-weight: 700;
     outline: none;
+    border-radius: 7px;
 
     border: 4px solid #febb02;
 

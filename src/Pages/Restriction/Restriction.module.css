@@ -1,11 +1,11 @@
 .booking{
     margin-bottom: 1rem;
     display: flex;
-    gap: 2rem;
+    gap: 6rem;
 cursor: pointer;
 }
 .signup{
-    /* margin-bottom: 10rem; */
+    margin-left: 2rem;
 
 }
 .centerDialbox{
@@ -24,9 +24,11 @@ cursor: pointer;
     height: 5vh;
     margin-left: 2rem;
     margin-top: 1rem;
-    border-radius: 20px;
+    cursor: pointer;
+    /* border-radius: 20px; */
     outline: none;
-    
+    border: none;
+border-bottom:1px solid black ;    
 
 }
 .button_{

@@ -51,7 +51,7 @@ function Footer() {
           <li>Hotels</li>
         </div>
       </div>
-      <h6 style={{marginLeft:'2rem'}}> Copyright © 2023 Hotel Booking By Swayam Gaur</h6>
+      <h6 style={{marginLeft:'2rem' , color:'white'}}> Copyright © 2023 Hotel Booking By Swayam Gaur</h6>
     </div>
   )
 }
