@@ -31,7 +31,18 @@
     margin-left: 2rem;
 
 }
-
+.name{
+    margin-top: 1.8rem;
+    margin-left: 0rem;
+    /* border: 1px solid black; */
+    height: 5vh;
+    /* background-color: white; */
+    font-weight: 300;
+    border: none;
+    /* width: 10%; */
+    /* text-align: center; */
+    border-radius: 5px;
+}
 .Reactrictoin {
     margin-top: 2rem;
     margin-left: 1rem;
@@ -125,7 +136,7 @@
 
 .input_text_buttom1 {
     width: 10%;
-    height: 8vh;
+    height: 10vh;
     margin-top: 1rem;
     background-color: blue;
     color: white;

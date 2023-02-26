@@ -2,7 +2,7 @@
 export  const ValidEmail =(email)=>{
     const emailvalid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
     if(emailvalid.test(email)){
-        return "true";
+        return " ";
     }else{
         return "false"
     }
@@ -11,7 +11,7 @@ export  const ValidEmail =(email)=>{
 export const validatPassword =(password)=>{
 const validitPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,20}$/
 if(validitPassword.test(password)){
-    return "true"
+    return " "
 }
 else {
     return "false"
@@ -23,7 +23,7 @@ else {
 export const validusername=(username)=>{
     const UsernameRegx = /^[a-zA-Z0-9]+([_\s/\-]?[a-zA-Z0-9])*$/;
     if(UsernameRegx.test(username)){
-        return "true"
+        return " "
     }
     else {
         return "false"
