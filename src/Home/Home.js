@@ -16,15 +16,34 @@ import { useRecoilState } from 'recoil'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useNavigate } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faBed,
+    faCalendarDays,
+    faCar,
+    faPerson,
+    faPlane,
+    faTaxi,
+} from "@fortawesome/free-solid-svg-icons";
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
 
 
 
 
 function Home() {
     const nav = useNavigate()
+    const [openDate, setOpenDate] = useState(false);
+    const [date, setDate] = useState([
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection",
+        },
+    ]);
     let person = JSON.parse(localStorage.getItem("person"))
-const[isLogin,setIsLogin] = useRecoilState(isLoginAtom)
-    
+    const [isLogin, setIsLogin] = useRecoilState(isLoginAtom)
+
     const Name = [
         {
             icon: <BiBed />,
@@ -54,33 +73,22 @@ const[isLogin,setIsLogin] = useRecoilState(isLoginAtom)
         setIsLogin(!isLogin)
         nav('/Login')
     }
-    
+
     return (
         <>
             <div className={style.main}>
                 <div className={style.center}>
                     <span> <h1 style={{ color: 'white', padding: '2rem', cursor: 'pointer' }}>Amanhome.me</h1></span>
-                    <span><h3 style={{ color: 'white', padding: '2rem', marginLeft: '15rem' }}>INR</h3></span>
+                    <span><h3 style={{ color: 'white', padding: '2rem', marginLeft: '15rem', cursor: 'pointer' }}>INR</h3></span>
                     <span><img width='25rem' height='25rem' className={style.img} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0d4fxjBGs5IOjeUMrkM9MGDuXxk37-DO9eg&usqp=CAU' /></span>
                     <h3 style={{ color: 'white' }}> < GrNotification className={style.img1} /></h3>
                     <h3 style={{ color: 'white', padding: '2rem' }}>List Your Property</h3>
-                    {isLogin?
-                    <> 
-                    <span className={style.Reactrictoin} onClick={()=>nav('/Restriction')}>Register</span>  <span onClick={()=>nav('/Login')} className={style.Reactrictoin}>Login</span>
-                       </>
-                    :<><h3 className={style.name} style={{ color: 'white', fontWeight: '500' }}>{person[0].name}</h3>
-                    <div className={style.Reactrictoin} onClick={handelLogout} >Logout</div></>  }
-                    
-
-                    {/* {islog ? <><h2 className={style.name}
-                        style={{ color: 'white' }}><CgProfile style={{ marginRight: '1rem' }} />
-                        {islog?.name}</h2>
-                        <button className={style.Reactrictoin} style={{ backgroundColor: 'white', outline: 'none', border: 'none' }} onClick={handeLog}>log out</button></> :
-                        <> <h3 className={style.Reactrictoin}>< d style={{ backgroundColor: 'white' }} /></h3>
-                            <h3 className={style.Reactrictoin}><d /> </h3></>
-
-                    } */}
-
+                    {isLogin ?
+                        <>
+                            <span className={style.Reactrictoin} style={{ cursor: 'pointer' }} onClick={() => nav('/Restriction')}>Register</span>  <span style={{ cursor: 'pointer' }} onClick={() => nav('/Login')} className={style.Reactrictoin}>Login</span>
+                        </>
+                        : <><h3 className={style.name} style={{ color: 'white', fontWeight: '500' }}>{person[0].name}</h3>
+                            <div className={style.Reactrictoin} onClick={handelLogout} >Logout</div></>}
                 </div>
                 <div className={style.secondCenter}>
                     {Name.map((logo) => {
@@ -94,17 +102,37 @@ const[isLogin,setIsLogin] = useRecoilState(isLoginAtom)
                     })}
 
                 </div>
-                <h1 style={{ marginTop: '-6rem', marginLeft: '3rem', fontSize: '900', color: 'white' }}>Where to next , 
-                {isLogin?
-                   ' '
-                    :<><h5  style={{ color: 'white' , marginLeft:'15rem' , marginTop:'-2.3rem'}}>{person[0].name}</h5>
-                    </>  }
-                 </h1>
+                <h1 style={{ marginTop: '-6rem', marginLeft: '3rem', fontSize: '900', color: 'white' }}>Where to next ,
+                    {isLogin ?
+                        ' '
+                        : <><h5 style={{ color: 'white', marginLeft: '15rem', marginTop: '-2.3rem' }}>{person[0].name}</h5>
+                        </>}
+                </h1>
                 <h4 style={{ marginTop: '0rem', marginLeft: '3rem', color: 'white' }}>Find exclusive Genius rewards in every corner of the world!</h4>
 
-                <div className={style.center_second}>
+                <div className={style.center_second} >
+
                     <input placeholder="  Search Hotel" className={style.input_text1} />
-                    <input placeholder='Check in Date - Check out Date' className={style.input_text} />
+                    <div className={style.input_text}>
+                        <FontAwesomeIcon icon={faCalendarDays} className={style.input_tet} />
+                        <span
+                            onClick={() => setOpenDate(!openDate)}
+                            className={style.date}
+                        >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+                            date[0].endDate,
+                            "MM/dd/yyyy"
+                        )}`}</span>
+                        {openDate && (
+                            <DateRange
+                                editableDateInputs={true}
+                                onChange={(item) => setDate([item.selection])}
+                                moveRangeOnFirstSelection={false}
+                                ranges={date}
+                                className="date"
+                                minDate={new Date()}
+                            />
+                        )}
+                    </div>
                     {/* <DateRangePicker
                         ranges={[selectionRange]}
                         onChange={handleSelect}

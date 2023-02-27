@@ -7,12 +7,14 @@ import Home from './Home/Home';
 import Card from './Components/Card/Card';
 import ScroolCard from './ScroolCard/ScroolCard';
 import Footer from './Components/Footer/Footer';
+import HotelList from './Components/HotelList.js/HotelList';
 
 function App() {
   return (
     <div className="Ap">
    
      <Home />
+     {/* <HotelList /> */}
      {/* <Restrictoin /> */}
      {/* <Card /> */}
      {/* <ScroolCard /> */}
