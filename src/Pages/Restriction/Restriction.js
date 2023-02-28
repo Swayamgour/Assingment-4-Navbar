@@ -169,7 +169,10 @@ const Restriction = () => {
     const nav = useNavigate()
    
 // console.log(emailvalid)
+const emailvalid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+
 const [data , setData] =useState([])
+const [email1 , setEmail1] =useState(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i)
     const [ user, setUser] = useState({
         name: "",
         email:"",
@@ -185,11 +188,10 @@ const [data , setData] =useState([])
         })
     }
 
- const emailvalid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
     const register = () => {
-        // nav('/Home')
+       
         const { name, email, password, reEnterPassword } = user
-        if( name && (email) && password && (password === reEnterPassword)){
+        if( name && email  && password && (password === reEnterPassword)){
             axios.post("http://localhost:9002/Restriction", user)
             .then( res => {
                   alert(res.data.message)

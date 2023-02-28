@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from '../Card/Card.module.css'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Card() {
+const nav = useNavigate()
+
+useEffect(()=>{
+         const listOfHotels=  async () =>{
+          const data = await axios.get("http://localhost:9002/myLogRegisterDb/cities")
+           console.log("product" , data)
+         }  
+         listOfHotels();
+        },[])
+      
+    
+    const handelClick=()=>{
+      nav('/HotelList')
+    }
+
+
+
+
   return (
     <div className={style.main}>
       <div>
 
-        <img className={style.ImgTag} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY28c9577YK1rqxSR3H595y7SiJRUKtk3VqA6oVQhJ0-Oghq_TayoJj_JAjtCsr1DMrNk&usqp=CAU'  style={{width:'16rem' , height:'32vh'}} />
+        <img className={style.ImgTag} onClick={handelClick} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY28c9577YK1rqxSR3H595y7SiJRUKtk3VqA6oVQhJ0-Oghq_TayoJj_JAjtCsr1DMrNk&usqp=CAU'  style={{width:'16rem' , height:'32vh'}} />
         <h2 className={style.text}>jammu kashmir  </h2>
         <h4 className={style.text1}>123 Property </h4>
       </div>

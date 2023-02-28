@@ -8,7 +8,7 @@ function HotelList() {
         {
             id: nanoid(),
             city: 'kanpur',
-            hotels: [
+            hotel: [
                 {
                     id: nanoid(),
                     hotelName1: 'tolk of toun',
@@ -153,7 +153,7 @@ function HotelList() {
         {
             id: nanoid(),
             city: 'Nagaland',
-            hotels: [
+            hotel: [
                 {
                     id: nanoid(),
                     hotelName1: 'tolk of toun'
@@ -298,7 +298,7 @@ function HotelList() {
         }, {
             id: nanoid(),
             city: 'Sikkim',
-            hotels: [
+            hotel: [
                 {
                     id: nanoid(),
                     hotelName1: 'tolk of toun'
@@ -443,7 +443,7 @@ function HotelList() {
         }, {
             id: nanoid(),
             city: 'UtterPardesh',
-            hotels: [
+            hotel: [
                 {
                     id: nanoid(),
                     hotelName1: 'tolk of toun'
@@ -589,7 +589,7 @@ function HotelList() {
         }, {
             id: nanoid(),
             city: 'Arunchal Pardesh',
-            hotels: [
+            hotel: [
                 {
                     id: nanoid(),
                     hotelName1: 'tolk of toun'
@@ -737,6 +737,16 @@ function HotelList() {
     console.log(data, "data")
     return (
         <div>
+            {data.map((x)=>{
+                return(
+                    <>
+                    {x.city}
+                    {x.hotel[0].hotelName1}
+                    <img src= {x.hotel[0].img}/>
+                    {/* {x[0].hotelName1} */}
+                    </>
+                )
+            })}
         </div>
 
     )

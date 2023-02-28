@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
 import { createBrowserRouter , RouterProvider } from 'react-router-dom';
 import Home from './Home/Home';
+import HotelList from './Components/HotelList.js/HotelList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       },{
         path: "/Restriction",
         element: <Restriction />,
+      },
+      {
+        path: "/HotelList",
+        element: <HotelList />,
       },
 ])
 root.render(
