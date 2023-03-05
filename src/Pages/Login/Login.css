@@ -1,0 +1,120 @@
+/* *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.heading{
+    display:flex;
+    justify-content: space-between;
+    padding:5px;
+}
+.heading h3{
+    margin-left:-10px;
+}
+.heading h4{
+    cursor:pointer;
+    color: black;
+}
+.signupform{
+    display:flex;
+    flex-direction:column;
+    width:450px;
+    gap:20px;
+}
+.signupform input[type="text"],[type="password"]{
+ padding:15px;
+ border-radius: 5px;
+ font-size: 17px;
+ border: none;
+ border-bottom: 1px solid black;
+ outline: none;
+}
+
+.conditions{
+    display:flex;
+    width:100%;
+    font-size:14px;
+    gap:10px;
+   
+}
+.conditions b{
+color:#6495ED;
+font-size:14px;
+}
+.conditions input{
+    width:23px;
+    height:23px;
+    margin-top:3px;
+}
+.or{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.or span{
+    width:175px;
+    display:inline-block;
+    border:.4px solid #bbb;
+}
+.dialogbox{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+.dialogbox a{
+    color:#6495ED;
+}
+.dialogbox button{
+    width:100%;
+    padding:15px;
+    text-align:center;
+    border-radius: 5px;
+    font-size:19px;
+    color:black;
+    outline:none;
+    border:none;
+}
+.signupform button{
+    background-color: #6495ED;
+    border-bottom:15px;
+} */
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.login {
+    width: 400px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+}
+
+.login > input {
+    border-radius: 8px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    width: 92%;
+    font-size: 1rem;
+}
+
+.login > .button {
+    background: #1877f2;
+    border: 1px solid #1877f2;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}

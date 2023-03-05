@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import Dialbox from './Components/Dialbox/Dialbox';
+import Login from './Pages/Login/Login';
+import Restrictoin from './Pages/Restriction/Restriction';
+import Home from './Home/Home';
+import Card from './Components/Card/Card';
+import ScroolCard from './ScroolCard/ScroolCard';
+import Footer from './Components/Footer/Footer';
+import HotelList from './Components/HotelList.js/HotelList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Ap">
+   
+     <Home />
+     {/* <HotelList /> */}
+     {/* <Restrictoin /> */}
+     {/* <Card /> */}
+     {/* <ScroolCard /> */}
+     {/* <Footer /> */}
     </div>
   );
 }
