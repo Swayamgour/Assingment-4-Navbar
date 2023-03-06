@@ -17,9 +17,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCalendarDays,
-} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarDays} from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 
@@ -93,11 +91,11 @@ function Home() {
                 <div className={style.secondCenter}>
                     {Name.map((logo , index) => {
                         return (
-                            <>
-                                <div  className={style.logoIconList} key={logo.id} >
+                            
+                                <div  className={style.logoIconList} key={index} >
                                     <span   className={style.logoIcon}>{logo.icon} {logo.name}</span>
                                 </div>
-                            </>
+                            
                         )
                     })}
 
@@ -134,7 +132,7 @@ function Home() {
                         )}
                     </div>
                     
-                    <input placeholder='1 Adults   0 Children   1 Rooms' className={style.input_text_buttom} onClick={handelClick} />
+                    <input placeholder='1 Adults   0 Children   1 Rooms' className={style.input_text_buttom} />
                     <button className={style.input_text_buttom1} onClick={()=>nav('/HotelList')}>Search</button>
 
                 </div>

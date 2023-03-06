@@ -10,6 +10,7 @@ import { createBrowserRouter , RouterProvider } from 'react-router-dom';
 import Home from './Home/Home';
 import HotelList from './Components/HotelList.js/HotelList';
 import Card_two from './Components/Card_two/Card_two';
+import OneHotel from './Pages/OneHotel/OneHotel';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/Card_two",
         element: <Card_two />,
+      },
+      {
+        path: "/OneHotel",
+        element: <OneHotel />,
       },
 ])
 root.render(

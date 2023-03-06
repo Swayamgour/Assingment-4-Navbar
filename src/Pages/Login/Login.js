@@ -3,6 +3,8 @@ import "./Login.css";
 import { isLoginAtom } from "../../Recoil";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom"
+import Swal from 'sweetalert2'
+
 
 const Login = () => {
 

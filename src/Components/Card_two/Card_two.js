@@ -1,32 +1,43 @@
 import React, { useEffect, useState } from 'react'
-import { hotelList } from '../../Helper'
+import { useNavigate } from 'react-router-dom'
 
 function HotelList() {
 const[storelist,setStorelist] =useState([])
+const[hotelData,setHotelData] =useState([])
+
+const nav = useNavigate()
+
     useEffect(()=>{
      const list = JSON.parse(localStorage.getItem('hotelist'))
      setStorelist(list)
     },[])
 
-    const handelOder =()=>{
-       
+    const handelOder =(_id)=>{
+       const Hotel  = storelist.filter((current)=>{
+        return current._id.$oid == _id.$oid
+       })
+       setHotelData(Hotel ,"hotel")
+       localStorage.setItem("oneHotel" , JSON.stringify(hotelData))
+       if(hotelData.length>0){
+        nav('/OneHotel')
+       }
     }
   
     return (
         <>
-                        {/*  */}
+        
   
-           {/* <h2>{storelist[0].city}</h2> */}
+          
             {storelist.map((hotels ,i ) => {
                 return (
                     
-                    <div>
+                    <div key={i}>
                          <h2  style={{ display: 'flex' , justifyContent:'center' , padding:'1.5rem' }}>{hotels.city}</h2>
                     <div style={{ display: 'flex' }} key={i}>
                            
                             <div >
                               
-                                <img src={hotels.img}  style={{ width: '20rem', height: '36vh', borderRadius: '10px'  , marginLeft:'1rem'}}/>
+                                <img src={hotels.img}  style={{ width: '20rem', height: '36vh', borderRadius: '10px'  , marginLeft:'1rem'}} onClick={()=>handelOder(hotels._id)}/>
                             </div>
 
 
@@ -37,7 +48,7 @@ const[storelist,setStorelist] =useState([])
                                <button style={{backgroundColor:'#1e90ff' , border:'none'}}>4.8*</button>
                                <br/>
                              
-                               <button style={{backgroundColor:'#1e90ff' , border:'none' , borderRadius:'3px'}} onClick={handelOder}>Book now</button>
+                               <button style={{backgroundColor:'#1e90ff' , border:'none' , borderRadius:'3px'}} onClick={()=>handelOder(hotels._id)}>Book now</button>
                             </div>
                             </div>
                         </div>
