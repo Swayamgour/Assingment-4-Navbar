@@ -91,10 +91,10 @@ function Home() {
                             <div className={style.Reactrictoin} onClick={handelLogout} >Logout</div></>}
                 </div>
                 <div className={style.secondCenter}>
-                    {Name.map((logo) => {
+                    {Name.map((logo , index) => {
                         return (
                             <>
-                                <div className={style.logoIconList}>
+                                <div  key={index} className={style.logoIconList}>
                                     <span className={style.logoIcon}>{logo.icon} {logo.name}</span>
                                 </div>
                             </>
@@ -133,16 +133,15 @@ function Home() {
                             />
                         )}
                     </div>
-                    {/* <DateRangePicker
-                        ranges={[selectionRange]}
-                        onChange={handleSelect}
-                    /> */}
+                    
                     <input placeholder='1 Adults   0 Children   1 Rooms' className={style.input_text_buttom} onClick={handelClick} />
-                    <button className={style.input_text_buttom1}>Search</button>
+                    <button className={style.input_text_buttom1} onClick={()=>nav('/HotelList')}>Search</button>
 
                 </div>
                 <div className={style.menuItem}>
-                    <Card />
+                    <Card  />
+                    
+
                 </div>
 
                 <div className={style.scroolList}>
