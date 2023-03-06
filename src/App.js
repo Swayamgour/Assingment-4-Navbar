@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Dialbox from './Components/Dialbox/Dialbox';
+// import Dialbox from './Components/Dialbox/Dialbox';
 import Login from './Pages/Login/Login';
 import Restrictoin from './Pages/Restriction/Restriction';
 import Home from './Home/Home';

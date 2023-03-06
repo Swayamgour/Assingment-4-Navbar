@@ -9,6 +9,7 @@ import { RecoilRoot } from 'recoil';
 import { createBrowserRouter , RouterProvider } from 'react-router-dom';
 import Home from './Home/Home';
 import HotelList from './Components/HotelList.js/HotelList';
+import Card_two from './Components/Card_two/Card_two';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: "/HotelList",
         element: <HotelList />,
       },
+      {
+        path: "/Card_two",
+        element: <Card_two />,
+      },
 ])
 root.render(
   
@@ -39,7 +44,6 @@ root.render(
     
     <RecoilRoot>
       <RouterProvider router={router} />
-    
     </RecoilRoot>
 );
 

@@ -18,12 +18,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faBed,
     faCalendarDays,
-    faCar,
-    faPerson,
-    faPlane,
-    faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
@@ -47,20 +42,25 @@ function Home() {
     const Name = [
         {
             icon: <BiBed />,
+            id:1,
             name: 'Stays'
         }
         , {
             icon: <TbPlaneInflight />,
+            id:2,
             name: "Flights"
         }, {
             icon: < GiWitchFlight />,
+            id:3,
             name: 'Flight + Hotel'
         }
         , {
             icon: <MdOutlineAttractions />,
+            id:4,
             name: "Attraction"
         }, {
             icon: <AiOutlineCar />,
+            id:5,
             name: 'AirPot Taxis'
         }
 
@@ -94,8 +94,8 @@ function Home() {
                     {Name.map((logo , index) => {
                         return (
                             <>
-                                <div  key={index} className={style.logoIconList}>
-                                    <span className={style.logoIcon}>{logo.icon} {logo.name}</span>
+                                <div  className={style.logoIconList} key={logo.id} >
+                                    <span   className={style.logoIcon}>{logo.icon} {logo.name}</span>
                                 </div>
                             </>
                         )
