@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import "./Login.css";
-import { isLoginAtom } from "../../Recoil";
-import { useRecoilState } from "recoil";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Restriction/firebase";
 import { useNavigate } from "react-router-dom"
 
 
@@ -10,10 +10,8 @@ const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const[islog , setIslog]=useRecoilState(isLoginAtom)
 
     const nav = useNavigate()
-    let person = JSON.parse(localStorage.getItem("person"))
 
     const handleChangeemail = e => {
         setEmail(e.target.value)
@@ -22,21 +20,21 @@ const Login = () => {
         setPassword(e.target.value)
 
     }
-
-    const login =()=> {
-         let MatchData = person.filter((x)=>x.email==email && x.password == password)
-        if (MatchData.length > 0) {
-            alert(" Login Successfull .✅")
-            setIslog(!islog)
-            nav('/Home')
-        }
-        else if (email === "") {
-            alert("please fill Email fild ⚠️")
-        }
-        else {
-            alert("register First")
-        }
-    }
+    const navigate = useNavigate()
+    const login = async () => {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            navigate("/Home");
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+          });
+      };
 
 
     return (
@@ -48,8 +46,10 @@ const Login = () => {
                 <div className="button" onClick={login}>Login</div>
                 <div>or</div>
                 <div className="button" onClick={() => nav("/Restriction")}>Register</div>
+
             </div>
         </div>
+
     )
 }
 

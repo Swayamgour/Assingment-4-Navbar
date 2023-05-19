@@ -34,7 +34,7 @@ function ScroolCard() {
 
                 <h6>233 hotels</h6>
             </div>
-           
+
         </div>
     )
 }

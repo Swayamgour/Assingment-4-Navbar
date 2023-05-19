@@ -11,15 +11,15 @@ import Card from '../Components/Card/Card'
 import ScroolCard from '../ScroolCard/ScroolCard'
 import ScroolCards from '../ScroolCard/ScroolCards'
 import Footer from '../Components/Footer/Footer'
-import { isLoginAtom } from '../Recoil'
-import { useRecoilState } from 'recoil'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCalendarDays} from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Pages/Restriction/firebase";
 
 
 
@@ -27,6 +27,7 @@ import { format } from "date-fns";
 function Home() {
     const nav = useNavigate()
     const [openDate, setOpenDate] = useState(false);
+    const [email, setEmail] = useState("");
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -34,31 +35,45 @@ function Home() {
             key: "selection",
         },
     ]);
-    let person = JSON.parse(localStorage.getItem("person"))
-    const [isLogin, setIsLogin] = useRecoilState(isLoginAtom)
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.email;
+            // ...
+            console.log("uid", uid);
+            setEmail(user.email);
+          } else {
+            // User is signed out
+            // ...
+            console.log("user is logged out");
+          }
+        });
+      }, []);
 
     const Name = [
         {
             icon: <BiBed />,
-            id:1,
+            id: 1,
             name: 'Stays'
         }
         , {
             icon: <TbPlaneInflight />,
-            id:2,
+            id: 2,
             name: "Flights"
         }, {
             icon: < GiWitchFlight />,
-            id:3,
+            id: 3,
             name: 'Flight + Hotel'
         }
         , {
             icon: <MdOutlineAttractions />,
-            id:4,
+            id: 4,
             name: "Attraction"
         }, {
             icon: <AiOutlineCar />,
-            id:5,
+            id: 5,
             name: 'AirPot Taxis'
         }
 
@@ -68,7 +83,6 @@ function Home() {
 
     }
     const handelLogout = () => {
-        setIsLogin(!isLogin)
         nav('/Login')
     }
 
@@ -81,37 +95,31 @@ function Home() {
                     <span><img width='25rem' height='25rem' className={style.img} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0d4fxjBGs5IOjeUMrkM9MGDuXxk37-DO9eg&usqp=CAU' /></span>
                     <h3 style={{ color: 'white' }}> < GrNotification className={style.img1} /></h3>
                     <h3 style={{ color: 'white', padding: '2rem' }}>List Your Property</h3>
-                    {isLogin ?
-                        <>
-                            <span className={style.Reactrictoin} style={{ cursor: 'pointer' }} onClick={() => nav('/Restriction')}>Register</span>  <span style={{ cursor: 'pointer' }} onClick={() => nav('/Login')} className={style.Reactrictoin}>Login</span>
-                        </>
-                        : <><h3 className={style.name} style={{ color: 'white', fontWeight: '500' }}>{person[0].name}</h3>
-                            <div className={style.Reactrictoin} onClick={handelLogout} >Logout</div></>}
-                </div>
+                    <h3 className={style.name} style={{ color: 'white', fontWeight: '500' }}></h3>
+                    <div className={style.Reactrictoin} onClick={handelLogout} >Logout</div>
+                </div> 
                 <div className={style.secondCenter}>
-                    {Name.map((logo , index) => {
+                    {Name.map((logo, index) => {
                         return (
-                            
-                                <div  className={style.logoIconList} key={index} >
-                                    <span   className={style.logoIcon}>{logo.icon} {logo.name}</span>
-                                </div>
-                            
+
+                            <div className={style.logoIconList} key={index} >
+                                <span className={style.logoIcon}>{logo.icon} {logo.name}</span>
+                            </div>
+
                         )
                     })}
 
                 </div>
                 <h1 style={{ marginTop: '-6rem', marginLeft: '3rem', fontSize: '900', color: 'white' }}>Where to next ,
-                    {isLogin ?
-                        ' '
-                        : <><h5 style={{ color: 'white', marginLeft: '15rem', marginTop: '-2.3rem' }}>{person[0].name}</h5>
-                        </>}
+                   <h5 style={{ color: 'white', marginLeft: '15rem', marginTop: '-2.3rem' }}>{email}</h5>
+                      
                 </h1>
-                <h4 style={{ marginTop: '0rem', marginLeft: '3rem', color: 'white' }}>Find exclusive Genius rewards in every corner of the world!</h4>
+                <h4 style={{ marginTop: '0rem', marginLeft: '3rem', color: 'white' }}>Find exclusive Genius rewards in every corner of the world!</h4> 
 
-                <div className={style.center_second} >
+                 <div className={style.center_second} >
 
-                    <input placeholder="  Search Hotel" className={style.input_text1} />
-                    <div className={style.input_text}>
+                    <input placeholder="  Search Hotel" className={style.input_text1} /> 
+                     <div className={style.input_text}>
                         <FontAwesomeIcon icon={faCalendarDays} className={style.input_tet} />
                         <span
                             onClick={() => setOpenDate(!openDate)}
@@ -130,15 +138,15 @@ function Home() {
                                 minDate={new Date()}
                             />
                         )}
-                    </div>
-                    
-                    <input placeholder='1 Adults   0 Children   1 Rooms' className={style.input_text_buttom} />
-                    <button className={style.input_text_buttom1} onClick={()=>nav('/HotelList')}>Search</button>
+                    </div> 
 
-                </div>
+                   <input placeholder='1 Adults   0 Children   1 Rooms' className={style.input_text_buttom} />
+                    <button className={style.input_text_buttom1} onClick={() => nav('/HotelList')}>Search</button>
+
+                </div> 
                 <div className={style.menuItem}>
-                    <Card  />
-                    
+                    <Card />
+
 
                 </div>
 
